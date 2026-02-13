@@ -24,6 +24,10 @@ namespace miniEAP
             this.lblReceive = new System.Windows.Forms.Label();
             this.pnlHeartbeat = new System.Windows.Forms.Panel();
             this.timerHeartbeat = new System.Windows.Forms.Timer(this.components);
+            this.lblUploadPath = new System.Windows.Forms.Label();
+            this.txtUploadPath = new System.Windows.Forms.TextBox();
+            this.btnSelectPath = new System.Windows.Forms.Button();
+            this.timerLogSync = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // cmbMultiplier
@@ -47,6 +51,38 @@ namespace miniEAP
             this.lblMultiplier.Size = new System.Drawing.Size(113, 12);
             this.lblMultiplier.TabIndex = 1;
             this.lblMultiplier.Text = "曝光機一次跑幾片";
+            // 
+            // lblUploadPath
+            // 
+            this.lblUploadPath.AutoSize = true;
+            this.lblUploadPath.Location = new System.Drawing.Point(285, 15);
+            this.lblUploadPath.Name = "lblUploadPath";
+            this.lblUploadPath.Size = new System.Drawing.Size(78, 12);
+            this.lblUploadPath.TabIndex = 7;
+            this.lblUploadPath.Text = "LOG 上傳路徑";
+            // 
+            // txtUploadPath
+            // 
+            this.txtUploadPath.Location = new System.Drawing.Point(369, 12);
+            this.txtUploadPath.Name = "txtUploadPath";
+            this.txtUploadPath.ReadOnly = true;
+            this.txtUploadPath.Size = new System.Drawing.Size(300, 22);
+            this.txtUploadPath.TabIndex = 8;
+            // 
+            // btnSelectPath
+            // 
+            this.btnSelectPath.Location = new System.Drawing.Point(675, 10);
+            this.btnSelectPath.Name = "btnSelectPath";
+            this.btnSelectPath.Size = new System.Drawing.Size(30, 23);
+            this.btnSelectPath.TabIndex = 9;
+            this.btnSelectPath.Text = "...";
+            this.btnSelectPath.UseVisualStyleBackColor = true;
+            this.btnSelectPath.Click += new System.EventHandler(this.btnSelectPath_Click);
+            // 
+            // timerLogSync
+            // 
+            this.timerLogSync.Interval = 300000;
+            this.timerLogSync.Tick += new System.EventHandler(this.timerLogSync_Tick);
             // 
             // pnlHeartbeat
             // 
@@ -103,6 +139,9 @@ namespace miniEAP
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.btnSelectPath);
+            this.Controls.Add(this.txtUploadPath);
+            this.Controls.Add(this.lblUploadPath);
             this.Controls.Add(this.pnlHeartbeat);
             this.Controls.Add(this.lblReceive);
             this.Controls.Add(this.lblSend);
@@ -126,5 +165,9 @@ namespace miniEAP
         private System.Windows.Forms.Label lblReceive;
         private System.Windows.Forms.Panel pnlHeartbeat;
         private System.Windows.Forms.Timer timerHeartbeat;
+        private System.Windows.Forms.Label lblUploadPath;
+        private System.Windows.Forms.TextBox txtUploadPath;
+        private System.Windows.Forms.Button btnSelectPath;
+        private System.Windows.Forms.Timer timerLogSync;
     }
 }

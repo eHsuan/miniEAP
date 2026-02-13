@@ -19,27 +19,24 @@ namespace miniEAP.Services
             try
             {
                 JObject transactionData = JObject.Parse(jsonPayload);
+
+                // Global Logic: If response from MES contains RefInputQty, always divide
+                if (!isRequestFromEqp && transactionData["RefInputQty"] != null)
+                {
+                    if (double.TryParse(transactionData["RefInputQty"].ToString(), out double val))
+                    {
+                        double newVal = Math.Ceiling(val / Multiplier);
+                        Log("Logic", $"[Global] RefInputQty Divide: {val} -> {newVal} (Multiplier: {Multiplier})");
+                        transactionData["RefInputQty"] = newVal.ToString("0.0");
+                    }
+                }
+
                 if (transactionData["TransactionName"] != null)
                 {
                     string txName = transactionData["TransactionName"].ToString();
                     
                     switch (txName)
                     {
-                        case "WOQRY":
-                            if (transactionData["RefInputQty"] != null)
-                            {
-                                double val = double.Parse(transactionData["RefInputQty"].ToString());
-                                double newVal = val;
-                                if (!isRequestFromEqp)
-                                {
-                                    // MES -> EQ: Divide
-                                    newVal = Math.Ceiling(val / Multiplier);
-                                    Log("Logic", $"[WOQRY] RefInputQty Divide: {val} -> {newVal} (Multiplier: {Multiplier})");
-                                }
-                                transactionData["RefInputQty"] = newVal.ToString("0.0");
-                                return transactionData.ToString(Newtonsoft.Json.Formatting.None);
-                            }
-                            break;
                         case "UserVerify":
                             //v1.0.1 : Fix User2DBarCode sometimes not upper issue
                             if (transactionData["User2DBarCode"] != null)
@@ -85,27 +82,28 @@ namespace miniEAP.Services
                                     }
                                 }
                                 transactionData["User2DBarCode"] = newValBarCode;
-                                return transactionData.ToString(Newtonsoft.Json.Formatting.None);
+                                break;
                             }
                             break;
                         case "WOCHECKOUT":
                             if (transactionData["OutPut"] != null)
                             {
-                                double val = double.Parse(transactionData["OutPut"].ToString());
-                                double newVal = val;
-                                if (isRequestFromEqp)
+                                if (double.TryParse(transactionData["OutPut"].ToString(), out double val))
                                 {
-                                    // EQ -> MES: Multiply
-                                    newVal = Math.Ceiling(val * Multiplier);
-                                    Log("Logic", $"[WOCHECKOUT] OutPut Multiply: {val} -> {newVal} (Multiplier: {Multiplier})");
+                                    double newVal = val;
+                                    if (isRequestFromEqp)
+                                    {
+                                        // EQ -> MES: Multiply
+                                        newVal = Math.Ceiling(val * Multiplier);
+                                        Log("Logic", $"[WOCHECKOUT] OutPut Multiply: {val} -> {newVal} (Multiplier: {Multiplier})");
+                                    }
+                                    transactionData["RefInputQty"] = newVal.ToString("0.0");
                                 }
-                                transactionData["RefInputQty"] = newVal.ToString("0.0");
-                                return transactionData.ToString(Newtonsoft.Json.Formatting.None);
                             }
                             break;
                     }
                 }
-                return jsonPayload;
+                return transactionData.ToString(Newtonsoft.Json.Formatting.None);
             }
             catch (Exception ex)
             {
