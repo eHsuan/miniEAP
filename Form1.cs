@@ -20,14 +20,16 @@ namespace miniEAP
     public partial class Form1 : Form
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
-        private string _ver = "1.0.4"; //版本號
+        private string _ver = "1.0.6"; //版本號
         private HttpListener _listener;
         private bool _isRunning = false;
         private bool _isTestMode = false;
         private readonly TransactionProcessor _processor = new TransactionProcessor();
         private readonly object _logLock = new object();
         private readonly string _settingFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "multiplier.config");
-        private readonly string _uploadPathFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "uploadpath.config");
+        private string _externalLogPath = "";
+        private string _ftpUser = "";
+        private string _ftpPassword = "";
         private bool _heartbeatToggle = false;
 
         public Form1()
@@ -69,11 +71,16 @@ namespace miniEAP
                 cmbMultiplier.SelectedIndex = 0; // Default to 1
             }
 
-            // Load Upload Path Setting
-            if (File.Exists(_uploadPathFile))
+            // Load External Log Path from Config
+            _externalLogPath = ConfigurationManager.AppSettings["ExternalLogPath"];
+            if (string.IsNullOrEmpty(_externalLogPath))
             {
-                txtUploadPath.Text = File.ReadAllText(_uploadPathFile).Trim();
+                _externalLogPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExternalLogs");
             }
+            _ftpUser = ConfigurationManager.AppSettings["ExternalLogFtpUser"] ?? "";
+            _ftpPassword = ConfigurationManager.AppSettings["ExternalLogFtpPassword"] ?? "";
+            
+            WriteLog("System", $"External log path set to: {_externalLogPath}");
 
             StartServer();
             timerHeartbeat.Start();
@@ -81,26 +88,6 @@ namespace miniEAP
             
             // Initial maintenance check
             Task.Run(() => MaintenanceTask());
-        }
-
-        private void btnSelectPath_Click(object sender, EventArgs e)
-        {
-            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
-            {
-                if (fbd.ShowDialog() == DialogResult.OK)
-                {
-                    txtUploadPath.Text = fbd.SelectedPath;
-                    try
-                    {
-                        File.WriteAllText(_uploadPathFile, fbd.SelectedPath);
-                        WriteLog("System", $"Upload path changed to: {fbd.SelectedPath}");
-                    }
-                    catch (Exception ex)
-                    {
-                        WriteLog("Error", $"Failed to save upload path: {ex.Message}");
-                    }
-                }
-            }
         }
 
         private void timerLogSync_Tick(object sender, EventArgs e)
@@ -162,55 +149,29 @@ namespace miniEAP
         {
             try
             {
-                string baseLogDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log");
-                if (!Directory.Exists(baseLogDir)) return;
-
                 DateTime now = DateTime.Now;
-                string uploadPath = txtUploadPath.Text;
+                string uploadPath = _externalLogPath;
 
-                // 1. Local Cleanup (3 months)
-                var dateDirs = Directory.GetDirectories(baseLogDir);
-                foreach (var dir in dateDirs)
+                // FTP 不支援目錄清理邏輯，僅針對本地路徑執行
+                if (!string.IsNullOrEmpty(uploadPath) && !uploadPath.StartsWith("ftp://", StringComparison.OrdinalIgnoreCase) && Directory.Exists(uploadPath))
                 {
-                    string dirName = Path.GetFileName(dir);
-                    if (DateTime.TryParseExact(dirName, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime dirDate))
+                    var logFiles = Directory.GetFiles(uploadPath, "*.txt");
+                    foreach (var file in logFiles)
                     {
-                        if ((now - dirDate).TotalDays > 90)
+                        string fileName = Path.GetFileNameWithoutExtension(file);
+                        // 檢查檔名是否為 yyyyMMdd 格式
+                        if (DateTime.TryParseExact(fileName, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime fileDate))
                         {
-                            try { Directory.Delete(dir, true); } catch { }
-                        }
-                    }
-                }
-
-                // 2. Sync and Upload Cleanup (3 days)
-                if (!string.IsNullOrEmpty(uploadPath) && Directory.Exists(uploadPath))
-                {
-                    // Copy Report logs for the last 3 days
-                    for (int i = 0; i < 3; i++)
-                    {
-                        string dateStr = now.AddDays(-i).ToString("yyyyMMdd");
-                        string sourceReportDir = Path.Combine(baseLogDir, dateStr, "Report");
-                        string destReportDir = Path.Combine(uploadPath, dateStr, "Report");
-
-                        if (Directory.Exists(sourceReportDir))
-                        {
-                            if (!Directory.Exists(destReportDir)) Directory.CreateDirectory(destReportDir);
-                            
-                            foreach (string file in Directory.GetFiles(sourceReportDir))
+                            if ((now - fileDate).TotalDays > 3)
                             {
-                                try 
-                                {
-                                    string destFile = Path.Combine(destReportDir, Path.GetFileName(file));
-                                    File.Copy(file, destFile, true); 
-                                } 
-                                catch { }
+                                try { File.Delete(file); } catch { }
                             }
                         }
                     }
 
-                    // Cleanup Upload Path (older than 3 days)
-                    var uploadDateDirs = Directory.GetDirectories(uploadPath);
-                    foreach (var dir in uploadDateDirs)
+                    // 同時清理舊的日期目錄 (相容舊版本產生的目錄)
+                    var dateDirs = Directory.GetDirectories(uploadPath);
+                    foreach (var dir in dateDirs)
                     {
                         string dirName = Path.GetFileName(dir);
                         if (DateTime.TryParseExact(dirName, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime dirDate))
@@ -225,7 +186,8 @@ namespace miniEAP
             }
             catch (Exception ex)
             {
-                WriteLog("Error", $"MaintenanceTask Failed: {ex.Message}");
+                // 注意：此處若寫 log 可能會因為 log4net 設定而混入單一檔案
+                System.Diagnostics.Debug.WriteLine($"MaintenanceTask Failed: {ex.Message}");
             }
         }
 
@@ -455,11 +417,6 @@ namespace miniEAP
                             result = service.EqpTransaction(modifiedParam);
                         }
 
-                        // 4. Receive from MES
-                        WriteLog("Json", $"[Receive from MES]: {result}");
-                        UpdateUI(txtReceive, $"[Receive from MES]: {result}");
-                        LogReportProcessing(result);
-                        
                         // 5. Logic: Divide RefInputQty
                         string modifiedResult = _processor.ProcessTransactionPayload(result, false);
 
@@ -468,6 +425,9 @@ namespace miniEAP
                         UpdateUI(txtSend, $"[Send to EQ]: {modifiedResult}");
 
                         SendSoapResponse(context, "EqpTransactionResponse", "EqpTransactionResult", modifiedResult);
+
+                        // 7. 在回應設備後，於背景非同步寫入外部日誌 (不影響交易速度)
+                        Task.Run(() => WriteExternalLog(modifiedParam, result));
                     }
                     else if (methodName == "InsertEqpErrorLog")
                     {
@@ -494,6 +454,102 @@ namespace miniEAP
                     SendSoapFault(context, "Server", ex.Message);
                 }
             });
+        }
+
+        private void WriteExternalLog(string sendToMesPayload, string receiveFromMesResult)
+        {
+            try
+            {
+                // 1. 檢查回覆是否成功 (不分大小寫)
+                if (string.IsNullOrEmpty(receiveFromMesResult)) return;
+
+                bool isSuccess = false;
+                try
+                {
+                    JObject resObj = JObject.Parse(receiveFromMesResult);
+                    string resStr = resObj["Result"]?.ToString()?.ToLower();
+                    if (resStr == "success") isSuccess = true;
+                }
+                catch
+                {
+                    // 若 JSON 解析失敗，退而求其次檢查字串
+                    if (receiveFromMesResult.ToLower().Contains("success")) isSuccess = true;
+                }
+
+                if (!isSuccess) return;
+
+                // 2. 獲取路徑 (已在 Load 時讀取自 App.config)
+                string path = _externalLogPath;
+
+                if (string.IsNullOrEmpty(path)) return;
+
+                // 3. 生成檔名 (yyyyMMdd.txt)
+                string fileName = DateTime.Now.ToString("yyyyMMdd") + ".txt";
+
+                // 4. 解析 TransactionName 作為 Log Type
+                string txName = "ExternalLog";
+                try
+                {
+                    JObject obj = JObject.Parse(sendToMesPayload);
+                    txName = obj["TransactionName"]?.ToString() ?? "ExternalLog";
+                }
+                catch { }
+
+                // 5. 格式化日誌內容
+                string logLine = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [{txName}] {sendToMesPayload}";
+
+                // 6. 判斷路徑類型並寫入
+                if (path.StartsWith("ftp://", StringComparison.OrdinalIgnoreCase))
+                {
+                    // 確保 URL 以斜槓結尾
+                    string baseUrl = path.EndsWith("/") ? path : path + "/";
+                    WriteToFtp(baseUrl + fileName, logLine);
+                    WriteLog("System", $"External log appended to FTP: {fileName}");
+                }
+                else
+                {
+                    // 3. 確保目錄存在
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    string filePath = Path.Combine(path, fileName);
+                    File.AppendAllText(filePath, logLine + Environment.NewLine);
+                    WriteLog("System", $"External log appended to local: {fileName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog("Error", $"Failed to write external log: {ex.Message}");
+            }
+        }
+
+        private void WriteToFtp(string url, string content)
+        {
+            try
+            {
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                request.Method = WebRequestMethods.Ftp.AppendFile;
+                request.Timeout = 3000;         // 連線逾時 3 秒
+                request.ReadWriteTimeout = 3000; // 讀寫逾時 3 秒
+                
+                if (!string.IsNullOrEmpty(_ftpUser))
+                {
+                    request.Credentials = new NetworkCredential(_ftpUser, _ftpPassword);
+                }
+
+                byte[] fileContents = Encoding.UTF8.GetBytes(content + Environment.NewLine);
+                request.ContentLength = fileContents.Length;
+
+                using (Stream requestStream = request.GetRequestStream())
+                {
+                    requestStream.Write(fileContents, 0, fileContents.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"FTP Upload Error: {ex.Message}");
+            }
         }
 
         private void SendSoapFault(HttpListenerContext context, string code, string message)
