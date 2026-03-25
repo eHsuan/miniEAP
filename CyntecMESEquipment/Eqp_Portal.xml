@@ -1,0 +1,3959 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="CyntecMES" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="CyntecMES" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="CyntecMES">
+      <s:element name="EqpTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpTransactionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEqpErrorLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEqpErrorLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertEqpErrorLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEqpTransactionLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEqpTransactionLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertEqpTransactionLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpStatusRefresh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpStatusRefreshResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpStatusRefreshResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertParameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertParameterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserCert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserCertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserCertResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckWO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckWOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckWOResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckTraceMat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckTraceMatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckTraceMatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckWOAlreadyCheckIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckWOAlreadyCheckInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckWOAlreadyCheckInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOQry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOQryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOQryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOInCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOInCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOInCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WO_CheckAlreadyIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WO_CheckAlreadyInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WO_CheckAlreadyInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WO_InsertUseMach">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WO_InsertUseMachResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WO_InsertUseMachResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOCheckIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOCheckInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOCheckInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOCheckIn_JustCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOCheckIn_JustCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOCheckIn_JustCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOParmCodeQry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOParmCodeQryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOParmCodeQryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPara">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkCenterAllPara">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkCenterAllParaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkCenterAllParaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpMatAddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAdd_Batch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAdd_BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpMatAdd_BatchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAdd_Batch_SkipRepeat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpMatAdd_Batch_SkipRepeatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpMatAdd_Batch_SkipRepeatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpWOInputAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpWOInputAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpWOInputAddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpWOInputAdd_Batch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpWOInputAdd_BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpWOInputAdd_BatchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpCarrierAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpCarrierAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpCarrierAddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpCarrierAdd_Batch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpCarrierAdd_BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpCarrierAdd_BatchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpPartProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpPartProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpPartProcessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpPartProcess_Batch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpPartProcess_BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpPartProcess_BatchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpTestValueRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqpTestValueRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EqpTestValueRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldInfo_ByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldInfo_ByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldInfo_ByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOnline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOnlineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOnlineByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOnlineByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOnlineByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMoverRsn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMoverRsnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMoverRsnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOffLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOffLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOffLineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOffLine_ByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOffLine_ByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOffLine_ByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOutputUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOutputUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOutputUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOutputUpdate_ByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MouldOutputUpdate_ByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MouldOutputUpdate_ByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MachOnlineMouldQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MachOnlineMouldQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MachOnlineMouldQueryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadTestResultFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadTestResultFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadTestResultFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CarrierIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CarrierInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CarrierInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WoCheckInCarrierCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WoCheckInCarrierCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WoCheckInCarrierCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WoCheckOutCarrierCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WoCheckOutCarrierCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WoCheckOutCarrierCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWONoByToolNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWONoByToolNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWONoByToolNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectionTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectionTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectionTestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CarrierIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CarrierInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MES_CarrierInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CarrierIn_JustCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CarrierIn_JustCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MES_CarrierIn_JustCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CheckEdcRawData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MES_CheckEdcRawDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MES_CheckEdcRawDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOBomQry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pParameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WOBomQryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WOBomQryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EqpTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpTransaction" />
+  </wsdl:message>
+  <wsdl:message name="EqpTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertEqpErrorLog" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertEqpErrorLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertEqpTransactionLog" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertEqpTransactionLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpStatusRefresh" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpStatusRefreshResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertParameter" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserCert" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserCertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckWO" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckWOResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckTraceMat" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckTraceMatResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckWOAlreadyCheckIn" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckWOAlreadyCheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOQrySoapIn">
+    <wsdl:part name="parameters" element="tns:WOQry" />
+  </wsdl:message>
+  <wsdl:message name="WOQrySoapOut">
+    <wsdl:part name="parameters" element="tns:WOQryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:WOInCheck" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:WOInCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInSoapIn">
+    <wsdl:part name="parameters" element="tns:WO_CheckAlreadyIn" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInSoapOut">
+    <wsdl:part name="parameters" element="tns:WO_CheckAlreadyInResponse" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachSoapIn">
+    <wsdl:part name="parameters" element="tns:WO_InsertUseMach" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachSoapOut">
+    <wsdl:part name="parameters" element="tns:WO_InsertUseMachResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInSoapIn">
+    <wsdl:part name="parameters" element="tns:WOCheckIn" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInSoapOut">
+    <wsdl:part name="parameters" element="tns:WOCheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:WOCheckIn_JustCheck" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:WOCheckIn_JustCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQrySoapIn">
+    <wsdl:part name="parameters" element="tns:WOParmCodeQry" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQrySoapOut">
+    <wsdl:part name="parameters" element="tns:WOParmCodeQryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPara" />
+  </wsdl:message>
+  <wsdl:message name="GetParaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkCenterAllPara" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkCenterAllParaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpMatAdd" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpMatAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpMatAdd_Batch" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpMatAdd_BatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpMatAdd_Batch_SkipRepeat" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpMatAdd_Batch_SkipRepeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpWOInputAdd" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpWOInputAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpWOInputAdd_Batch" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpWOInputAdd_BatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpCarrierAdd" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpCarrierAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpCarrierAdd_Batch" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpCarrierAdd_BatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpPartProcess" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpPartProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpPartProcess_Batch" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpPartProcess_BatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:EqpTestValueRecord" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:EqpTestValueRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldInfo" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldInfo_ByID" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldInfo_ByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOnline" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOnlineByID" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOnlineByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMoverRsn" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMoverRsnResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOffLine" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOffLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOffLine_ByID" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOffLine_ByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOutputUpdate" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOutputUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:MouldOutputUpdate_ByID" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:MouldOutputUpdate_ByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:MachOnlineMouldQuery" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:MachOnlineMouldQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadTestResultFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadTestResultFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInSoapIn">
+    <wsdl:part name="parameters" element="tns:CarrierIn" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInSoapOut">
+    <wsdl:part name="parameters" element="tns:CarrierInResponse" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:WoCheckInCarrierCheck" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:WoCheckInCarrierCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:WoCheckOutCarrierCheck" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:WoCheckOutCarrierCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWONoByToolNo" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWONoByToolNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapIn">
+    <wsdl:part name="parameters" element="tns:ConnectionTest" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectionTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInSoapIn">
+    <wsdl:part name="parameters" element="tns:MES_CarrierIn" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInSoapOut">
+    <wsdl:part name="parameters" element="tns:MES_CarrierInResponse" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:MES_CarrierIn_JustCheck" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:MES_CarrierIn_JustCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataSoapIn">
+    <wsdl:part name="parameters" element="tns:MES_CheckEdcRawData" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataSoapOut">
+    <wsdl:part name="parameters" element="tns:MES_CheckEdcRawDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQrySoapIn">
+    <wsdl:part name="parameters" element="tns:WOBomQry" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQrySoapOut">
+    <wsdl:part name="parameters" element="tns:WOBomQryResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqpTransactionHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTransactionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOQryHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOQryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQryHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetParaHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetParaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQueryHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQueryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestHttpGetIn" />
+  <wsdl:message name="ConnectionTestHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQryHttpGetIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTransactionHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTransactionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpErrorLogHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertEqpTransactionLogHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpStatusRefreshHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertParameterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCertHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckTraceMatHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckWOAlreadyCheckInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOQryHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOQryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOInCheckHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_CheckAlreadyInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WO_InsertUseMachHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOCheckIn_JustCheckHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQryHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOParmCodeQryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetParaHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetParaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCenterAllParaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_BatchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpMatAdd_Batch_SkipRepeatHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpWOInputAdd_BatchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpCarrierAdd_BatchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcessHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpPartProcess_BatchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EqpTestValueRecordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldInfo_ByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOnlineByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMoverRsnHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLineHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOffLine_ByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MouldOutputUpdate_ByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQueryHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MachOnlineMouldQueryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadTestResultFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CarrierInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckInCarrierCheckHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WoCheckOutCarrierCheckHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWONoByToolNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ConnectionTestHttpPostIn" />
+  <wsdl:message name="ConnectionTestHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierInHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CarrierIn_JustCheckHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MES_CheckEdcRawDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQryHttpPostIn">
+    <wsdl:part name="pParameter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WOBomQryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Eqp_PortalSoap">
+    <wsdl:operation name="EqpTransaction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;設備連線調用統一入口</wsdl:documentation>
+      <wsdl:input message="tns:EqpTransactionSoapIn" />
+      <wsdl:output message="tns:EqpTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <wsdl:input message="tns:InsertEqpErrorLogSoapIn" />
+      <wsdl:output message="tns:InsertEqpErrorLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <wsdl:input message="tns:InsertEqpTransactionLogSoapIn" />
+      <wsdl:output message="tns:InsertEqpTransactionLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <wsdl:input message="tns:EqpStatusRefreshSoapIn" />
+      <wsdl:output message="tns:EqpStatusRefreshSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <wsdl:input message="tns:InsertParameterSoapIn" />
+      <wsdl:output message="tns:InsertParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <wsdl:input message="tns:CheckUserCertSoapIn" />
+      <wsdl:output message="tns:CheckUserCertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input message="tns:CheckUserSoapIn" />
+      <wsdl:output message="tns:CheckUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <wsdl:input message="tns:CheckWOSoapIn" />
+      <wsdl:output message="tns:CheckWOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <wsdl:input message="tns:CheckTraceMatSoapIn" />
+      <wsdl:output message="tns:CheckTraceMatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <wsdl:input message="tns:CheckWOAlreadyCheckInSoapIn" />
+      <wsdl:output message="tns:CheckWOAlreadyCheckInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <wsdl:input message="tns:WOQrySoapIn" />
+      <wsdl:output message="tns:WOQrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <wsdl:input message="tns:WOInCheckSoapIn" />
+      <wsdl:output message="tns:WOInCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <wsdl:input message="tns:WO_CheckAlreadyInSoapIn" />
+      <wsdl:output message="tns:WO_CheckAlreadyInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <wsdl:input message="tns:WO_InsertUseMachSoapIn" />
+      <wsdl:output message="tns:WO_InsertUseMachSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <wsdl:input message="tns:WOCheckInSoapIn" />
+      <wsdl:output message="tns:WOCheckInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <wsdl:input message="tns:WOCheckIn_JustCheckSoapIn" />
+      <wsdl:output message="tns:WOCheckIn_JustCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <wsdl:input message="tns:WOParmCodeQrySoapIn" />
+      <wsdl:output message="tns:WOParmCodeQrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaSoapIn" />
+      <wsdl:output message="tns:GetParaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <wsdl:input message="tns:GetWorkCenterAllParaSoapIn" />
+      <wsdl:output message="tns:GetWorkCenterAllParaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <wsdl:input message="tns:EqpMatAddSoapIn" />
+      <wsdl:output message="tns:EqpMatAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <wsdl:input message="tns:EqpMatAdd_BatchSoapIn" />
+      <wsdl:output message="tns:EqpMatAdd_BatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <wsdl:input message="tns:EqpMatAdd_Batch_SkipRepeatSoapIn" />
+      <wsdl:output message="tns:EqpMatAdd_Batch_SkipRepeatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <wsdl:input message="tns:EqpWOInputAddSoapIn" />
+      <wsdl:output message="tns:EqpWOInputAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <wsdl:input message="tns:EqpWOInputAdd_BatchSoapIn" />
+      <wsdl:output message="tns:EqpWOInputAdd_BatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <wsdl:input message="tns:EqpCarrierAddSoapIn" />
+      <wsdl:output message="tns:EqpCarrierAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <wsdl:input message="tns:EqpCarrierAdd_BatchSoapIn" />
+      <wsdl:output message="tns:EqpCarrierAdd_BatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <wsdl:input message="tns:EqpPartProcessSoapIn" />
+      <wsdl:output message="tns:EqpPartProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <wsdl:input message="tns:EqpPartProcess_BatchSoapIn" />
+      <wsdl:output message="tns:EqpPartProcess_BatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <wsdl:input message="tns:EqpTestValueRecordSoapIn" />
+      <wsdl:output message="tns:EqpTestValueRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <wsdl:input message="tns:MouldInfoSoapIn" />
+      <wsdl:output message="tns:MouldInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <wsdl:input message="tns:MouldInfo_ByIDSoapIn" />
+      <wsdl:output message="tns:MouldInfo_ByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <wsdl:input message="tns:MouldOnlineSoapIn" />
+      <wsdl:output message="tns:MouldOnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <wsdl:input message="tns:MouldOnlineByIDSoapIn" />
+      <wsdl:output message="tns:MouldOnlineByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <wsdl:input message="tns:GetMoverRsnSoapIn" />
+      <wsdl:output message="tns:GetMoverRsnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <wsdl:input message="tns:MouldOffLineSoapIn" />
+      <wsdl:output message="tns:MouldOffLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <wsdl:input message="tns:MouldOffLine_ByIDSoapIn" />
+      <wsdl:output message="tns:MouldOffLine_ByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <wsdl:input message="tns:MouldOutputUpdateSoapIn" />
+      <wsdl:output message="tns:MouldOutputUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <wsdl:input message="tns:MouldOutputUpdate_ByIDSoapIn" />
+      <wsdl:output message="tns:MouldOutputUpdate_ByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <wsdl:input message="tns:MachOnlineMouldQuerySoapIn" />
+      <wsdl:output message="tns:MachOnlineMouldQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <wsdl:input message="tns:UploadTestResultFileSoapIn" />
+      <wsdl:output message="tns:UploadTestResultFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <wsdl:input message="tns:CarrierInSoapIn" />
+      <wsdl:output message="tns:CarrierInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <wsdl:input message="tns:WoCheckInCarrierCheckSoapIn" />
+      <wsdl:output message="tns:WoCheckInCarrierCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <wsdl:input message="tns:WoCheckOutCarrierCheckSoapIn" />
+      <wsdl:output message="tns:WoCheckOutCarrierCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <wsdl:input message="tns:GetWONoByToolNoSoapIn" />
+      <wsdl:output message="tns:GetWONoByToolNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;測試連線用</wsdl:documentation>
+      <wsdl:input message="tns:ConnectionTestSoapIn" />
+      <wsdl:output message="tns:ConnectionTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <wsdl:input message="tns:MES_CarrierInSoapIn" />
+      <wsdl:output message="tns:MES_CarrierInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <wsdl:input message="tns:MES_CarrierIn_JustCheckSoapIn" />
+      <wsdl:output message="tns:MES_CarrierIn_JustCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <wsdl:input message="tns:MES_CheckEdcRawDataSoapIn" />
+      <wsdl:output message="tns:MES_CheckEdcRawDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <wsdl:input message="tns:WOBomQrySoapIn" />
+      <wsdl:output message="tns:WOBomQrySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Eqp_PortalHttpGet">
+    <wsdl:operation name="EqpTransaction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;設備連線調用統一入口</wsdl:documentation>
+      <wsdl:input message="tns:EqpTransactionHttpGetIn" />
+      <wsdl:output message="tns:EqpTransactionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <wsdl:input message="tns:InsertEqpErrorLogHttpGetIn" />
+      <wsdl:output message="tns:InsertEqpErrorLogHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <wsdl:input message="tns:InsertEqpTransactionLogHttpGetIn" />
+      <wsdl:output message="tns:InsertEqpTransactionLogHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <wsdl:input message="tns:EqpStatusRefreshHttpGetIn" />
+      <wsdl:output message="tns:EqpStatusRefreshHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <wsdl:input message="tns:InsertParameterHttpGetIn" />
+      <wsdl:output message="tns:InsertParameterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <wsdl:input message="tns:CheckUserCertHttpGetIn" />
+      <wsdl:output message="tns:CheckUserCertHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input message="tns:CheckUserHttpGetIn" />
+      <wsdl:output message="tns:CheckUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <wsdl:input message="tns:CheckWOHttpGetIn" />
+      <wsdl:output message="tns:CheckWOHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <wsdl:input message="tns:CheckTraceMatHttpGetIn" />
+      <wsdl:output message="tns:CheckTraceMatHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <wsdl:input message="tns:CheckWOAlreadyCheckInHttpGetIn" />
+      <wsdl:output message="tns:CheckWOAlreadyCheckInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <wsdl:input message="tns:WOQryHttpGetIn" />
+      <wsdl:output message="tns:WOQryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <wsdl:input message="tns:WOInCheckHttpGetIn" />
+      <wsdl:output message="tns:WOInCheckHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <wsdl:input message="tns:WO_CheckAlreadyInHttpGetIn" />
+      <wsdl:output message="tns:WO_CheckAlreadyInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <wsdl:input message="tns:WO_InsertUseMachHttpGetIn" />
+      <wsdl:output message="tns:WO_InsertUseMachHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <wsdl:input message="tns:WOCheckInHttpGetIn" />
+      <wsdl:output message="tns:WOCheckInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <wsdl:input message="tns:WOCheckIn_JustCheckHttpGetIn" />
+      <wsdl:output message="tns:WOCheckIn_JustCheckHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <wsdl:input message="tns:WOParmCodeQryHttpGetIn" />
+      <wsdl:output message="tns:WOParmCodeQryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaHttpGetIn" />
+      <wsdl:output message="tns:GetParaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <wsdl:input message="tns:GetWorkCenterAllParaHttpGetIn" />
+      <wsdl:output message="tns:GetWorkCenterAllParaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <wsdl:input message="tns:EqpMatAddHttpGetIn" />
+      <wsdl:output message="tns:EqpMatAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <wsdl:input message="tns:EqpMatAdd_BatchHttpGetIn" />
+      <wsdl:output message="tns:EqpMatAdd_BatchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <wsdl:input message="tns:EqpMatAdd_Batch_SkipRepeatHttpGetIn" />
+      <wsdl:output message="tns:EqpMatAdd_Batch_SkipRepeatHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <wsdl:input message="tns:EqpWOInputAddHttpGetIn" />
+      <wsdl:output message="tns:EqpWOInputAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <wsdl:input message="tns:EqpWOInputAdd_BatchHttpGetIn" />
+      <wsdl:output message="tns:EqpWOInputAdd_BatchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <wsdl:input message="tns:EqpCarrierAddHttpGetIn" />
+      <wsdl:output message="tns:EqpCarrierAddHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <wsdl:input message="tns:EqpCarrierAdd_BatchHttpGetIn" />
+      <wsdl:output message="tns:EqpCarrierAdd_BatchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <wsdl:input message="tns:EqpPartProcessHttpGetIn" />
+      <wsdl:output message="tns:EqpPartProcessHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <wsdl:input message="tns:EqpPartProcess_BatchHttpGetIn" />
+      <wsdl:output message="tns:EqpPartProcess_BatchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <wsdl:input message="tns:EqpTestValueRecordHttpGetIn" />
+      <wsdl:output message="tns:EqpTestValueRecordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <wsdl:input message="tns:MouldInfoHttpGetIn" />
+      <wsdl:output message="tns:MouldInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <wsdl:input message="tns:MouldInfo_ByIDHttpGetIn" />
+      <wsdl:output message="tns:MouldInfo_ByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <wsdl:input message="tns:MouldOnlineHttpGetIn" />
+      <wsdl:output message="tns:MouldOnlineHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <wsdl:input message="tns:MouldOnlineByIDHttpGetIn" />
+      <wsdl:output message="tns:MouldOnlineByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <wsdl:input message="tns:GetMoverRsnHttpGetIn" />
+      <wsdl:output message="tns:GetMoverRsnHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <wsdl:input message="tns:MouldOffLineHttpGetIn" />
+      <wsdl:output message="tns:MouldOffLineHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <wsdl:input message="tns:MouldOffLine_ByIDHttpGetIn" />
+      <wsdl:output message="tns:MouldOffLine_ByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <wsdl:input message="tns:MouldOutputUpdateHttpGetIn" />
+      <wsdl:output message="tns:MouldOutputUpdateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <wsdl:input message="tns:MouldOutputUpdate_ByIDHttpGetIn" />
+      <wsdl:output message="tns:MouldOutputUpdate_ByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <wsdl:input message="tns:MachOnlineMouldQueryHttpGetIn" />
+      <wsdl:output message="tns:MachOnlineMouldQueryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <wsdl:input message="tns:UploadTestResultFileHttpGetIn" />
+      <wsdl:output message="tns:UploadTestResultFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <wsdl:input message="tns:CarrierInHttpGetIn" />
+      <wsdl:output message="tns:CarrierInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <wsdl:input message="tns:WoCheckInCarrierCheckHttpGetIn" />
+      <wsdl:output message="tns:WoCheckInCarrierCheckHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <wsdl:input message="tns:WoCheckOutCarrierCheckHttpGetIn" />
+      <wsdl:output message="tns:WoCheckOutCarrierCheckHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <wsdl:input message="tns:GetWONoByToolNoHttpGetIn" />
+      <wsdl:output message="tns:GetWONoByToolNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;測試連線用</wsdl:documentation>
+      <wsdl:input message="tns:ConnectionTestHttpGetIn" />
+      <wsdl:output message="tns:ConnectionTestHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <wsdl:input message="tns:MES_CarrierInHttpGetIn" />
+      <wsdl:output message="tns:MES_CarrierInHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <wsdl:input message="tns:MES_CarrierIn_JustCheckHttpGetIn" />
+      <wsdl:output message="tns:MES_CarrierIn_JustCheckHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <wsdl:input message="tns:MES_CheckEdcRawDataHttpGetIn" />
+      <wsdl:output message="tns:MES_CheckEdcRawDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <wsdl:input message="tns:WOBomQryHttpGetIn" />
+      <wsdl:output message="tns:WOBomQryHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Eqp_PortalHttpPost">
+    <wsdl:operation name="EqpTransaction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;設備連線調用統一入口</wsdl:documentation>
+      <wsdl:input message="tns:EqpTransactionHttpPostIn" />
+      <wsdl:output message="tns:EqpTransactionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <wsdl:input message="tns:InsertEqpErrorLogHttpPostIn" />
+      <wsdl:output message="tns:InsertEqpErrorLogHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <wsdl:input message="tns:InsertEqpTransactionLogHttpPostIn" />
+      <wsdl:output message="tns:InsertEqpTransactionLogHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <wsdl:input message="tns:EqpStatusRefreshHttpPostIn" />
+      <wsdl:output message="tns:EqpStatusRefreshHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <wsdl:input message="tns:InsertParameterHttpPostIn" />
+      <wsdl:output message="tns:InsertParameterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <wsdl:input message="tns:CheckUserCertHttpPostIn" />
+      <wsdl:output message="tns:CheckUserCertHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input message="tns:CheckUserHttpPostIn" />
+      <wsdl:output message="tns:CheckUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <wsdl:input message="tns:CheckWOHttpPostIn" />
+      <wsdl:output message="tns:CheckWOHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <wsdl:input message="tns:CheckTraceMatHttpPostIn" />
+      <wsdl:output message="tns:CheckTraceMatHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <wsdl:input message="tns:CheckWOAlreadyCheckInHttpPostIn" />
+      <wsdl:output message="tns:CheckWOAlreadyCheckInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <wsdl:input message="tns:WOQryHttpPostIn" />
+      <wsdl:output message="tns:WOQryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <wsdl:input message="tns:WOInCheckHttpPostIn" />
+      <wsdl:output message="tns:WOInCheckHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <wsdl:input message="tns:WO_CheckAlreadyInHttpPostIn" />
+      <wsdl:output message="tns:WO_CheckAlreadyInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <wsdl:input message="tns:WO_InsertUseMachHttpPostIn" />
+      <wsdl:output message="tns:WO_InsertUseMachHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <wsdl:input message="tns:WOCheckInHttpPostIn" />
+      <wsdl:output message="tns:WOCheckInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <wsdl:input message="tns:WOCheckIn_JustCheckHttpPostIn" />
+      <wsdl:output message="tns:WOCheckIn_JustCheckHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <wsdl:input message="tns:WOParmCodeQryHttpPostIn" />
+      <wsdl:output message="tns:WOParmCodeQryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <wsdl:input message="tns:GetParaHttpPostIn" />
+      <wsdl:output message="tns:GetParaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <wsdl:input message="tns:GetWorkCenterAllParaHttpPostIn" />
+      <wsdl:output message="tns:GetWorkCenterAllParaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <wsdl:input message="tns:EqpMatAddHttpPostIn" />
+      <wsdl:output message="tns:EqpMatAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <wsdl:input message="tns:EqpMatAdd_BatchHttpPostIn" />
+      <wsdl:output message="tns:EqpMatAdd_BatchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <wsdl:input message="tns:EqpMatAdd_Batch_SkipRepeatHttpPostIn" />
+      <wsdl:output message="tns:EqpMatAdd_Batch_SkipRepeatHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <wsdl:input message="tns:EqpWOInputAddHttpPostIn" />
+      <wsdl:output message="tns:EqpWOInputAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <wsdl:input message="tns:EqpWOInputAdd_BatchHttpPostIn" />
+      <wsdl:output message="tns:EqpWOInputAdd_BatchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <wsdl:input message="tns:EqpCarrierAddHttpPostIn" />
+      <wsdl:output message="tns:EqpCarrierAddHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <wsdl:input message="tns:EqpCarrierAdd_BatchHttpPostIn" />
+      <wsdl:output message="tns:EqpCarrierAdd_BatchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <wsdl:input message="tns:EqpPartProcessHttpPostIn" />
+      <wsdl:output message="tns:EqpPartProcessHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <wsdl:input message="tns:EqpPartProcess_BatchHttpPostIn" />
+      <wsdl:output message="tns:EqpPartProcess_BatchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <wsdl:input message="tns:EqpTestValueRecordHttpPostIn" />
+      <wsdl:output message="tns:EqpTestValueRecordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <wsdl:input message="tns:MouldInfoHttpPostIn" />
+      <wsdl:output message="tns:MouldInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <wsdl:input message="tns:MouldInfo_ByIDHttpPostIn" />
+      <wsdl:output message="tns:MouldInfo_ByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <wsdl:input message="tns:MouldOnlineHttpPostIn" />
+      <wsdl:output message="tns:MouldOnlineHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <wsdl:input message="tns:MouldOnlineByIDHttpPostIn" />
+      <wsdl:output message="tns:MouldOnlineByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <wsdl:input message="tns:GetMoverRsnHttpPostIn" />
+      <wsdl:output message="tns:GetMoverRsnHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <wsdl:input message="tns:MouldOffLineHttpPostIn" />
+      <wsdl:output message="tns:MouldOffLineHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <wsdl:input message="tns:MouldOffLine_ByIDHttpPostIn" />
+      <wsdl:output message="tns:MouldOffLine_ByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <wsdl:input message="tns:MouldOutputUpdateHttpPostIn" />
+      <wsdl:output message="tns:MouldOutputUpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <wsdl:input message="tns:MouldOutputUpdate_ByIDHttpPostIn" />
+      <wsdl:output message="tns:MouldOutputUpdate_ByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <wsdl:input message="tns:MachOnlineMouldQueryHttpPostIn" />
+      <wsdl:output message="tns:MachOnlineMouldQueryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <wsdl:input message="tns:UploadTestResultFileHttpPostIn" />
+      <wsdl:output message="tns:UploadTestResultFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <wsdl:input message="tns:CarrierInHttpPostIn" />
+      <wsdl:output message="tns:CarrierInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <wsdl:input message="tns:WoCheckInCarrierCheckHttpPostIn" />
+      <wsdl:output message="tns:WoCheckInCarrierCheckHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <wsdl:input message="tns:WoCheckOutCarrierCheckHttpPostIn" />
+      <wsdl:output message="tns:WoCheckOutCarrierCheckHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <wsdl:input message="tns:GetWONoByToolNoHttpPostIn" />
+      <wsdl:output message="tns:GetWONoByToolNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">說明：&lt;br&gt;測試連線用</wsdl:documentation>
+      <wsdl:input message="tns:ConnectionTestHttpPostIn" />
+      <wsdl:output message="tns:ConnectionTestHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <wsdl:input message="tns:MES_CarrierInHttpPostIn" />
+      <wsdl:output message="tns:MES_CarrierInHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <wsdl:input message="tns:MES_CarrierIn_JustCheckHttpPostIn" />
+      <wsdl:output message="tns:MES_CarrierIn_JustCheckHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <wsdl:input message="tns:MES_CheckEdcRawDataHttpPostIn" />
+      <wsdl:output message="tns:MES_CheckEdcRawDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <wsdl:input message="tns:WOBomQryHttpPostIn" />
+      <wsdl:output message="tns:WOBomQryHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Eqp_PortalSoap" type="tns:Eqp_PortalSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EqpTransaction">
+      <soap:operation soapAction="CyntecMES/EqpTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <soap:operation soapAction="CyntecMES/InsertEqpErrorLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <soap:operation soapAction="CyntecMES/InsertEqpTransactionLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <soap:operation soapAction="CyntecMES/EqpStatusRefresh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <soap:operation soapAction="CyntecMES/InsertParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <soap:operation soapAction="CyntecMES/CheckUserCert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="CyntecMES/CheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <soap:operation soapAction="CyntecMES/CheckWO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <soap:operation soapAction="CyntecMES/CheckTraceMat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <soap:operation soapAction="CyntecMES/CheckWOAlreadyCheckIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <soap:operation soapAction="CyntecMES/WOQry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <soap:operation soapAction="CyntecMES/WOInCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <soap:operation soapAction="CyntecMES/WO_CheckAlreadyIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <soap:operation soapAction="CyntecMES/WO_InsertUseMach" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <soap:operation soapAction="CyntecMES/WOCheckIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <soap:operation soapAction="CyntecMES/WOCheckIn_JustCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <soap:operation soapAction="CyntecMES/WOParmCodeQry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <soap:operation soapAction="CyntecMES/GetPara" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <soap:operation soapAction="CyntecMES/GetWorkCenterAllPara" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <soap:operation soapAction="CyntecMES/EqpMatAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <soap:operation soapAction="CyntecMES/EqpMatAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <soap:operation soapAction="CyntecMES/EqpMatAdd_Batch_SkipRepeat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <soap:operation soapAction="CyntecMES/EqpWOInputAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <soap:operation soapAction="CyntecMES/EqpWOInputAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <soap:operation soapAction="CyntecMES/EqpCarrierAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <soap:operation soapAction="CyntecMES/EqpCarrierAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <soap:operation soapAction="CyntecMES/EqpPartProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <soap:operation soapAction="CyntecMES/EqpPartProcess_Batch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <soap:operation soapAction="CyntecMES/EqpTestValueRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <soap:operation soapAction="CyntecMES/MouldInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <soap:operation soapAction="CyntecMES/MouldInfo_ByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <soap:operation soapAction="CyntecMES/MouldOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <soap:operation soapAction="CyntecMES/MouldOnlineByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <soap:operation soapAction="CyntecMES/GetMoverRsn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <soap:operation soapAction="CyntecMES/MouldOffLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <soap:operation soapAction="CyntecMES/MouldOffLine_ByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <soap:operation soapAction="CyntecMES/MouldOutputUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <soap:operation soapAction="CyntecMES/MouldOutputUpdate_ByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <soap:operation soapAction="CyntecMES/MachOnlineMouldQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <soap:operation soapAction="CyntecMES/UploadTestResultFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <soap:operation soapAction="CyntecMES/CarrierIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <soap:operation soapAction="CyntecMES/WoCheckInCarrierCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <soap:operation soapAction="CyntecMES/WoCheckOutCarrierCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <soap:operation soapAction="CyntecMES/GetWONoByToolNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap:operation soapAction="CyntecMES/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <soap:operation soapAction="CyntecMES/MES_CarrierIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <soap:operation soapAction="CyntecMES/MES_CarrierIn_JustCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <soap:operation soapAction="CyntecMES/MES_CheckEdcRawData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <soap:operation soapAction="CyntecMES/WOBomQry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Eqp_PortalSoap12" type="tns:Eqp_PortalSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EqpTransaction">
+      <soap12:operation soapAction="CyntecMES/EqpTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <soap12:operation soapAction="CyntecMES/InsertEqpErrorLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <soap12:operation soapAction="CyntecMES/InsertEqpTransactionLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <soap12:operation soapAction="CyntecMES/EqpStatusRefresh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <soap12:operation soapAction="CyntecMES/InsertParameter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <soap12:operation soapAction="CyntecMES/CheckUserCert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap12:operation soapAction="CyntecMES/CheckUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <soap12:operation soapAction="CyntecMES/CheckWO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <soap12:operation soapAction="CyntecMES/CheckTraceMat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <soap12:operation soapAction="CyntecMES/CheckWOAlreadyCheckIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <soap12:operation soapAction="CyntecMES/WOQry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <soap12:operation soapAction="CyntecMES/WOInCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <soap12:operation soapAction="CyntecMES/WO_CheckAlreadyIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <soap12:operation soapAction="CyntecMES/WO_InsertUseMach" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <soap12:operation soapAction="CyntecMES/WOCheckIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <soap12:operation soapAction="CyntecMES/WOCheckIn_JustCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <soap12:operation soapAction="CyntecMES/WOParmCodeQry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <soap12:operation soapAction="CyntecMES/GetPara" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <soap12:operation soapAction="CyntecMES/GetWorkCenterAllPara" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <soap12:operation soapAction="CyntecMES/EqpMatAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <soap12:operation soapAction="CyntecMES/EqpMatAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <soap12:operation soapAction="CyntecMES/EqpMatAdd_Batch_SkipRepeat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <soap12:operation soapAction="CyntecMES/EqpWOInputAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <soap12:operation soapAction="CyntecMES/EqpWOInputAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <soap12:operation soapAction="CyntecMES/EqpCarrierAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <soap12:operation soapAction="CyntecMES/EqpCarrierAdd_Batch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <soap12:operation soapAction="CyntecMES/EqpPartProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <soap12:operation soapAction="CyntecMES/EqpPartProcess_Batch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <soap12:operation soapAction="CyntecMES/EqpTestValueRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <soap12:operation soapAction="CyntecMES/MouldInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <soap12:operation soapAction="CyntecMES/MouldInfo_ByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <soap12:operation soapAction="CyntecMES/MouldOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <soap12:operation soapAction="CyntecMES/MouldOnlineByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <soap12:operation soapAction="CyntecMES/GetMoverRsn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <soap12:operation soapAction="CyntecMES/MouldOffLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <soap12:operation soapAction="CyntecMES/MouldOffLine_ByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <soap12:operation soapAction="CyntecMES/MouldOutputUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <soap12:operation soapAction="CyntecMES/MouldOutputUpdate_ByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <soap12:operation soapAction="CyntecMES/MachOnlineMouldQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <soap12:operation soapAction="CyntecMES/UploadTestResultFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <soap12:operation soapAction="CyntecMES/CarrierIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <soap12:operation soapAction="CyntecMES/WoCheckInCarrierCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <soap12:operation soapAction="CyntecMES/WoCheckOutCarrierCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <soap12:operation soapAction="CyntecMES/GetWONoByToolNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <soap12:operation soapAction="CyntecMES/ConnectionTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <soap12:operation soapAction="CyntecMES/MES_CarrierIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <soap12:operation soapAction="CyntecMES/MES_CarrierIn_JustCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <soap12:operation soapAction="CyntecMES/MES_CheckEdcRawData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <soap12:operation soapAction="CyntecMES/WOBomQry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Eqp_PortalHttpGet" type="tns:Eqp_PortalHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="EqpTransaction">
+      <http:operation location="/EqpTransaction" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <http:operation location="/InsertEqpErrorLog" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <http:operation location="/InsertEqpTransactionLog" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <http:operation location="/EqpStatusRefresh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <http:operation location="/InsertParameter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <http:operation location="/CheckUserCert" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <http:operation location="/CheckUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <http:operation location="/CheckWO" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <http:operation location="/CheckTraceMat" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <http:operation location="/CheckWOAlreadyCheckIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <http:operation location="/WOQry" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <http:operation location="/WOInCheck" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <http:operation location="/WO_CheckAlreadyIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <http:operation location="/WO_InsertUseMach" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <http:operation location="/WOCheckIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <http:operation location="/WOCheckIn_JustCheck" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <http:operation location="/WOParmCodeQry" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <http:operation location="/GetPara" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <http:operation location="/GetWorkCenterAllPara" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <http:operation location="/EqpMatAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <http:operation location="/EqpMatAdd_Batch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <http:operation location="/EqpMatAdd_Batch_SkipRepeat" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <http:operation location="/EqpWOInputAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <http:operation location="/EqpWOInputAdd_Batch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <http:operation location="/EqpCarrierAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <http:operation location="/EqpCarrierAdd_Batch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <http:operation location="/EqpPartProcess" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <http:operation location="/EqpPartProcess_Batch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <http:operation location="/EqpTestValueRecord" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <http:operation location="/MouldInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <http:operation location="/MouldInfo_ByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <http:operation location="/MouldOnline" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <http:operation location="/MouldOnlineByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <http:operation location="/GetMoverRsn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <http:operation location="/MouldOffLine" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <http:operation location="/MouldOffLine_ByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <http:operation location="/MouldOutputUpdate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <http:operation location="/MouldOutputUpdate_ByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <http:operation location="/MachOnlineMouldQuery" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <http:operation location="/UploadTestResultFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <http:operation location="/CarrierIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <http:operation location="/WoCheckInCarrierCheck" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <http:operation location="/WoCheckOutCarrierCheck" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <http:operation location="/GetWONoByToolNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <http:operation location="/ConnectionTest" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <http:operation location="/MES_CarrierIn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <http:operation location="/MES_CarrierIn_JustCheck" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <http:operation location="/MES_CheckEdcRawData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <http:operation location="/WOBomQry" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Eqp_PortalHttpPost" type="tns:Eqp_PortalHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EqpTransaction">
+      <http:operation location="/EqpTransaction" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpErrorLog">
+      <http:operation location="/InsertEqpErrorLog" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEqpTransactionLog">
+      <http:operation location="/InsertEqpTransactionLog" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpStatusRefresh">
+      <http:operation location="/EqpStatusRefresh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertParameter">
+      <http:operation location="/InsertParameter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserCert">
+      <http:operation location="/CheckUserCert" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <http:operation location="/CheckUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWO">
+      <http:operation location="/CheckWO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckTraceMat">
+      <http:operation location="/CheckTraceMat" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWOAlreadyCheckIn">
+      <http:operation location="/CheckWOAlreadyCheckIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOQry">
+      <http:operation location="/WOQry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOInCheck">
+      <http:operation location="/WOInCheck" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_CheckAlreadyIn">
+      <http:operation location="/WO_CheckAlreadyIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WO_InsertUseMach">
+      <http:operation location="/WO_InsertUseMach" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn">
+      <http:operation location="/WOCheckIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOCheckIn_JustCheck">
+      <http:operation location="/WOCheckIn_JustCheck" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOParmCodeQry">
+      <http:operation location="/WOParmCodeQry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPara">
+      <http:operation location="/GetPara" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenterAllPara">
+      <http:operation location="/GetWorkCenterAllPara" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd">
+      <http:operation location="/EqpMatAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch">
+      <http:operation location="/EqpMatAdd_Batch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpMatAdd_Batch_SkipRepeat">
+      <http:operation location="/EqpMatAdd_Batch_SkipRepeat" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd">
+      <http:operation location="/EqpWOInputAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpWOInputAdd_Batch">
+      <http:operation location="/EqpWOInputAdd_Batch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd">
+      <http:operation location="/EqpCarrierAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpCarrierAdd_Batch">
+      <http:operation location="/EqpCarrierAdd_Batch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess">
+      <http:operation location="/EqpPartProcess" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpPartProcess_Batch">
+      <http:operation location="/EqpPartProcess_Batch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqpTestValueRecord">
+      <http:operation location="/EqpTestValueRecord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo">
+      <http:operation location="/MouldInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldInfo_ByID">
+      <http:operation location="/MouldInfo_ByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnline">
+      <http:operation location="/MouldOnline" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOnlineByID">
+      <http:operation location="/MouldOnlineByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMoverRsn">
+      <http:operation location="/GetMoverRsn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine">
+      <http:operation location="/MouldOffLine" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOffLine_ByID">
+      <http:operation location="/MouldOffLine_ByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate">
+      <http:operation location="/MouldOutputUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MouldOutputUpdate_ByID">
+      <http:operation location="/MouldOutputUpdate_ByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MachOnlineMouldQuery">
+      <http:operation location="/MachOnlineMouldQuery" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTestResultFile">
+      <http:operation location="/UploadTestResultFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CarrierIn">
+      <http:operation location="/CarrierIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckInCarrierCheck">
+      <http:operation location="/WoCheckInCarrierCheck" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WoCheckOutCarrierCheck">
+      <http:operation location="/WoCheckOutCarrierCheck" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWONoByToolNo">
+      <http:operation location="/GetWONoByToolNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectionTest">
+      <http:operation location="/ConnectionTest" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn">
+      <http:operation location="/MES_CarrierIn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CarrierIn_JustCheck">
+      <http:operation location="/MES_CarrierIn_JustCheck" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MES_CheckEdcRawData">
+      <http:operation location="/MES_CheckEdcRawData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WOBomQry">
+      <http:operation location="/WOBomQry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Eqp_Portal">
+    <wsdl:port name="Eqp_PortalSoap" binding="tns:Eqp_PortalSoap">
+      <soap:address location="http://twcynmeswebqa01/CyntecDataCenter/service/Eqp/Eqp_Portal.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Eqp_PortalSoap12" binding="tns:Eqp_PortalSoap12">
+      <soap12:address location="http://twcynmeswebqa01/CyntecDataCenter/service/Eqp/Eqp_Portal.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Eqp_PortalHttpGet" binding="tns:Eqp_PortalHttpGet">
+      <http:address location="http://twcynmeswebqa01/CyntecDataCenter/service/Eqp/Eqp_Portal.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Eqp_PortalHttpPost" binding="tns:Eqp_PortalHttpPost">
+      <http:address location="http://twcynmeswebqa01/CyntecDataCenter/service/Eqp/Eqp_Portal.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
