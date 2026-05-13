@@ -20,7 +20,7 @@ namespace miniEAP
     public partial class Form1 : Form
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
-        private string _ver = "1.0.6"; //版本號
+        private string _ver = "1.0.7"; //版本號
         private HttpListener _listener;
         private bool _isRunning = false;
         private bool _isTestMode = false;
@@ -30,6 +30,7 @@ namespace miniEAP
         private string _externalLogPath = "";
         private string _ftpUser = "";
         private string _ftpPassword = "";
+        private string _checkRecipeId = "";
         private bool _heartbeatToggle = false;
 
         public Form1()
@@ -79,6 +80,7 @@ namespace miniEAP
             }
             _ftpUser = ConfigurationManager.AppSettings["ExternalLogFtpUser"] ?? "";
             _ftpPassword = ConfigurationManager.AppSettings["ExternalLogFtpPassword"] ?? "";
+            _checkRecipeId = ConfigurationManager.AppSettings["CheckRecipeID"] ?? "MHUN12AD03SEC_BVIA2";
             
             WriteLog("System", $"External log path set to: {_externalLogPath}");
 
@@ -320,7 +322,85 @@ namespace miniEAP
                         UpdateUI(txtSend, $"[Send to MES]: {modifiedParam}");
                         LogReportProcessing(modifiedParam);
                         
-                        if (_isTestMode)
+                        // [Check Mode] Special logic for WOQRY, WOCHECKIN, WOCHECKOUT with WONO 999999999999
+                        bool isCheckMode = false;
+                        try 
+                        {
+                            JObject inputObj = JObject.Parse(modifiedParam);
+                            string txName = inputObj["TransactionName"]?.ToString();
+                            string woNo = inputObj["WONO"]?.ToString();
+
+                            if (woNo == "999999999999" && (txName == "WOQRY" || txName == "WOCHECKIN" || txName == "WOCHECKOUT"))
+                            {
+                                isCheckMode = true;
+                                WriteLog("System", $"[Check Mode] Intercepted {txName} for 999999999999");
+                                
+                                if (txName == "WOQRY")
+                                {
+                                    string currentMultiplier = _processor.Multiplier.ToString("0.000");
+                                    JObject checkRes = new JObject();
+                                    checkRes["MatGroupNo"] = "UP";
+                                    checkRes["LineCode"] = "UP01";
+                                    checkRes["MatNo"] = "";
+                                    checkRes["WIPQty"] = 0;
+                                    checkRes["CurrentWorkCenterNo"] = "UPEX999";
+                                    checkRes["CreateDate"] = "";
+                                    checkRes["MatClassCode"] = "UP022";
+                                    checkRes["UnitQty"] = 0;
+                                    checkRes["WToPcs"] = 0;
+                                    checkRes["SToPcs"] = 0;
+                                    checkRes["WorkCenterNo"] = "UPEX999";
+                                    checkRes["WorkCenterName"] = "點檢作業";
+                                    checkRes["FlowID"] = 8401;
+                                    checkRes["AlreadyInFlag"] = "N";
+                                    checkRes["RefInputQty"] = currentMultiplier;
+                                    checkRes["BatchNo"] = "";
+                                    checkRes["NGCodeListDT"] = "";
+                                    
+                                    JArray inputParamList = new JArray();
+                                    JObject recipeParam = new JObject();
+                                    recipeParam["ParamCode"] = "000010398";
+                                    recipeParam["ParamName"] = "RECIPEID";
+                                    recipeParam["RequireInput"] = "N";
+                                    recipeParam["DataListItem"] = "";
+                                    recipeParam["DefaultValue"] = _checkRecipeId;
+                                    recipeParam["RefFieldCode"] = "RECIPE ID";
+                                    recipeParam["UpperValue"] = "";
+                                    recipeParam["LowerValue"] = "";
+                                    recipeParam["Showable"] = "Y";
+                                    inputParamList.Add(recipeParam);
+                                    
+                                    checkRes["InputParamListDT"] = inputParamList.ToString(Newtonsoft.Json.Formatting.None);
+                                    checkRes["WOGroupDT"] = "[]";
+                                    checkRes["WOGroupTotalWIPQty"] = "0";
+                                    checkRes["WOGroupTotalLotCount"] = "0";
+                                    checkRes["Result"] = "success";
+                                    checkRes["ResultCode"] = "";
+                                    checkRes["Message"] = "";
+                                    
+                                    result = checkRes.ToString(Newtonsoft.Json.Formatting.None);
+                                }
+                                else
+                                {
+                                    // Simple success response for WOCHECKIN/WOCHECKOUT
+                                    JObject simpleRes = new JObject();
+                                    simpleRes["Result"] = "success";
+                                    simpleRes["ResultCode"] = "";
+                                    simpleRes["Message"] = "";
+                                    result = simpleRes.ToString(Newtonsoft.Json.Formatting.None);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLog("Error", $"Check Mode Detection Failed: {ex.Message}");
+                        }
+
+                        if (isCheckMode)
+                        {
+                            // Skip MES and TestMode logic, result already set
+                        }
+                        else if (_isTestMode)
                         {
                             WriteLog("Json", "[Test Mode]: Skipping MES transaction. Returning simulated success.");
                             
@@ -427,7 +507,10 @@ namespace miniEAP
                         SendSoapResponse(context, "EqpTransactionResponse", "EqpTransactionResult", modifiedResult);
 
                         // 7. 在回應設備後，於背景非同步寫入外部日誌 (不影響交易速度)
-                        Task.Run(() => WriteExternalLog(modifiedParam, result));
+                        if (!isCheckMode)
+                        {
+                            Task.Run(() => WriteExternalLog(modifiedParam, result));
+                        }
                     }
                     else if (methodName == "InsertEqpErrorLog")
                     {
