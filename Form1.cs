@@ -32,6 +32,7 @@ namespace miniEAP
         private string _ftpPassword = "";
         private string _checkRecipeId = "";
         private bool _heartbeatToggle = false;
+        private TimeServer _timeServer;
 
         public Form1()
         {
@@ -54,6 +55,20 @@ namespace miniEAP
                 WriteLog("System", "Running in TEST MODE");
             }
             this.Text += " v." + _ver;
+
+            // Start Time Server
+            string timeSyncPortStr = ConfigurationManager.AppSettings["TimeSyncPort"];
+            if (int.TryParse(timeSyncPortStr, out int timeSyncPort))
+            {
+                _timeServer = new TimeServer(timeSyncPort);
+                _timeServer.Start();
+                WriteLog("System", $"TimeServer started on port {timeSyncPort}");
+            }
+            else
+            {
+                WriteLog("Error", $"Invalid TimeSyncPort in config: {timeSyncPortStr}. TimeServer not started.");
+            }
+
             // Load Multiplier Setting
             if (File.Exists(_settingFile))
             {
@@ -702,5 +717,14 @@ namespace miniEAP
                 System.Diagnostics.Debug.WriteLine($"Logging Failed: {ex.Message}");
             }
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            _isRunning = false;
+            _timeServer?.Stop();
+            try { _listener?.Stop(); } catch { }
+            base.OnFormClosing(e);
+        }
     }
 }
+

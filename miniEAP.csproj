@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TimeCalTool\**" />
+    <None Remove="TimeCalTool\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CyntecMESEquipment">
       <HintPath>..\CyntecMESEquipment\bin\Debug\net40\CyntecMESEquipment.dll</HintPath>
     </Reference>
