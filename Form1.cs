@@ -20,7 +20,7 @@ namespace miniEAP
     public partial class Form1 : Form
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
-        private string _ver = "1.0.7"; //版本號
+        private string _ver = "1.1.0"; //版本號
         private HttpListener _listener;
         private bool _isRunning = false;
         private bool _isTestMode = false;
@@ -31,6 +31,7 @@ namespace miniEAP
         private string _ftpUser = "";
         private string _ftpPassword = "";
         private string _checkRecipeId = "";
+        private string _checkWorkOrder = "";
         private bool _heartbeatToggle = false;
         private TimeServer _timeServer;
 
@@ -96,7 +97,8 @@ namespace miniEAP
             _ftpUser = ConfigurationManager.AppSettings["ExternalLogFtpUser"] ?? "";
             _ftpPassword = ConfigurationManager.AppSettings["ExternalLogFtpPassword"] ?? "";
             _checkRecipeId = ConfigurationManager.AppSettings["CheckRecipeID"] ?? "MHUN12AD03SEC_BVIA2";
-            
+            _checkWorkOrder = ConfigurationManager.AppSettings["CheckWorkOrder"] ?? "999999999999";
+
             WriteLog("System", $"External log path set to: {_externalLogPath}");
 
             StartServer();
@@ -336,8 +338,8 @@ namespace miniEAP
                         WriteLog("Json", $"[Send to MES]: {modifiedParam}");
                         UpdateUI(txtSend, $"[Send to MES]: {modifiedParam}");
                         LogReportProcessing(modifiedParam);
-                        
-                        // [Check Mode] Special logic for WOQRY, WOCHECKIN, WOCHECKOUT with WONO 999999999999
+
+                        // [Check Mode] Special logic for WOQRY, WOCHECKIN, WOCHECKOUT with _checkWorkOrder
                         bool isCheckMode = false;
                         try 
                         {
@@ -345,45 +347,69 @@ namespace miniEAP
                             string txName = inputObj["TransactionName"]?.ToString();
                             string woNo = inputObj["WONO"]?.ToString();
 
-                            if (woNo == "999999999999" && (txName == "WOQRY" || txName == "WOCHECKIN" || txName == "WOCHECKOUT"))
+                            if (woNo == _checkWorkOrder && (txName == "WOQRY" || txName == "WOCHECKIN" || txName == "WOCHECKOUT"))
                             {
                                 isCheckMode = true;
-                                WriteLog("System", $"[Check Mode] Intercepted {txName} for 999999999999");
+                                WriteLog("System", $"[Check Mode] Intercepted {txName} for {_checkWorkOrder}");
                                 
                                 if (txName == "WOQRY")
                                 {
-                                    string currentMultiplier = _processor.Multiplier.ToString("0.000");
                                     JObject checkRes = new JObject();
                                     checkRes["MatGroupNo"] = "UP";
                                     checkRes["LineCode"] = "UP01";
-                                    checkRes["MatNo"] = "";
-                                    checkRes["WIPQty"] = 0;
-                                    checkRes["CurrentWorkCenterNo"] = "UPEX999";
-                                    checkRes["CreateDate"] = "";
+                                    checkRes["MatNo"] = "MHUN12AD03SECM";
+                                    checkRes["WIPQty"] = 15132.000;
+                                    checkRes["CurrentWorkCenterNo"] = "UPEX023";
+                                    checkRes["CreateDate"] = "2026-05-13T08:44:09";
                                     checkRes["MatClassCode"] = "UP022";
-                                    checkRes["UnitQty"] = 0;
-                                    checkRes["WToPcs"] = 0;
+                                    checkRes["UnitQty"] = 2000;
+                                    checkRes["WToPcs"] = 1516;
                                     checkRes["SToPcs"] = 0;
-                                    checkRes["WorkCenterNo"] = "UPEX999";
-                                    checkRes["WorkCenterName"] = "點檢作業";
-                                    checkRes["FlowID"] = 8401;
+                                    checkRes["WorkCenterNo"] = "UPEX023";
+                                    checkRes["WorkCenterName"] = "A-RDL-1-A面曝光";
+                                    checkRes["FlowID"] = 4603;
                                     checkRes["AlreadyInFlag"] = "N";
-                                    checkRes["RefInputQty"] = currentMultiplier;
+                                    checkRes["RefInputQty"] = "10.000";
                                     checkRes["BatchNo"] = "";
-                                    checkRes["NGCodeListDT"] = "";
+                                    checkRes["NGCodeListDT"] = "[{\"NGCode\":\"UPNG501\",\"NGName\":\"機台卡片\"},{\"NGCode\":\"UPNG502\",\"NGName\":\"人為疏失折片\"},{\"NGCode\":\"UPNG503\",\"NGName\":\"工程驗證抽片\"}]";
                                     
                                     JArray inputParamList = new JArray();
-                                    JObject recipeParam = new JObject();
-                                    recipeParam["ParamCode"] = "000010398";
-                                    recipeParam["ParamName"] = "RECIPEID";
-                                    recipeParam["RequireInput"] = "N";
-                                    recipeParam["DataListItem"] = "";
-                                    recipeParam["DefaultValue"] = _checkRecipeId;
-                                    recipeParam["RefFieldCode"] = "RECIPE ID";
-                                    recipeParam["UpperValue"] = "";
-                                    recipeParam["LowerValue"] = "";
-                                    recipeParam["Showable"] = "Y";
-                                    inputParamList.Add(recipeParam);
+                                    
+                                    JObject param1 = new JObject();
+                                    param1["ParamCode"] = "000032116_ORI";
+                                    param1["ParamName"] = "RECIPEID_ORI";
+                                    param1["RequireInput"] = "N";
+                                    param1["DataListItem"] = "_ORI";
+                                    param1["DefaultValue"] = "MHUN12AD03SECM_AR1_ORI";
+                                    param1["RefFieldCode"] = "RECIPE ID_ORI";
+                                    param1["UpperValue"] = "_ORI";
+                                    param1["LowerValue"] = "_ORI";
+                                    param1["Showable"] = "N";
+                                    inputParamList.Add(param1);
+
+                                    JObject param2 = new JObject();
+                                    param2["ParamCode"] = "000032116";
+                                    param2["ParamName"] = "RECIPEID";
+                                    param2["RequireInput"] = "N";
+                                    param2["DataListItem"] = "";
+                                    param2["DefaultValue"] = _checkRecipeId;
+                                    param2["RefFieldCode"] = "RECIPE ID";
+                                    param2["UpperValue"] = "";
+                                    param2["LowerValue"] = "";
+                                    param2["Showable"] = "Y";
+                                    inputParamList.Add(param2);
+
+                                    JObject param3 = new JObject();
+                                    param3["ParamCode"] = "000032743";
+                                    param3["ParamName"] = "Datecode";
+                                    param3["RequireInput"] = "N";
+                                    param3["DataListItem"] = "";
+                                    param3["DefaultValue"] = "Y";
+                                    param3["RefFieldCode"] = "DATECODE";
+                                    param3["UpperValue"] = "";
+                                    param3["LowerValue"] = "";
+                                    param3["Showable"] = "N";
+                                    inputParamList.Add(param3);
                                     
                                     checkRes["InputParamListDT"] = inputParamList.ToString(Newtonsoft.Json.Formatting.None);
                                     checkRes["WOGroupDT"] = "[]";
