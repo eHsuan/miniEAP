@@ -369,7 +369,7 @@ namespace miniEAP
                                     checkRes["WorkCenterName"] = "A-RDL-1-A面曝光";
                                     checkRes["FlowID"] = 4603;
                                     checkRes["AlreadyInFlag"] = "N";
-                                    checkRes["RefInputQty"] = "10.000";
+                                    checkRes["RefInputQty"] = "1.0";
                                     checkRes["BatchNo"] = "";
                                     checkRes["NGCodeListDT"] = "[{\"NGCode\":\"UPNG501\",\"NGName\":\"機台卡片\"},{\"NGCode\":\"UPNG502\",\"NGName\":\"人為疏失折片\"},{\"NGCode\":\"UPNG503\",\"NGName\":\"工程驗證抽片\"}]";
                                     
@@ -538,8 +538,8 @@ namespace miniEAP
                             result = service.EqpTransaction(modifiedParam);
                         }
 
-                        // 5. Logic: Divide RefInputQty
-                        string modifiedResult = _processor.ProcessTransactionPayload(result, false);
+                        // 5. Logic: Divide RefInputQty (點檢模式下跳過倍率除法，強制傳送 1 片)
+                        string modifiedResult = isCheckMode ? result : _processor.ProcessTransactionPayload(result, false);
 
                         // 6. Send to EQ
                         WriteLog("Json", $"[Send to EQ]: {modifiedResult}");
